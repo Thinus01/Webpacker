@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  password: 5432
+
+development:
+  <<: *default
+  database: webpacker_development
+
+test:
+  <<: *default
+  database: webpacker_test
+
+production:
+  <<: *default
+  database: webpacker_production
+  username: Resort_Booking_Back_end
+  password: <%= ENV["webpacker_DATABASE_PASSWORD"] %>
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
